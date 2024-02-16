@@ -12,7 +12,7 @@ module.exports= class favouriteServices{
     };
 
     //get favourite
-    async getFavourite(body){
+    async checkFavourite(body){
         try {
             return await favourite.findOne(body);
         } catch (error) {
@@ -37,6 +37,15 @@ module.exports= class favouriteServices{
             return favourite.findByIdAndUpdate(id,{$set:body},{new:true});
         } catch (error) {
             console.log({error,message:"Error is in update favourite service"});
+            return error.message;
+        }
+    }
+
+    async deleteFavourite(id){
+        try {
+            return favourite.findByIdAndDelete(id);
+        } catch (error) {
+            console.log({error,message:"Error is in deletefavourite service"});
             return error.message;
         }
     }
