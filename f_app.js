@@ -26,6 +26,7 @@ const productroutes=require('./routes/admin/product.admin.routes');
 const productuserroutes= require('./routes/user/product.routes');
 const favouriteroutes= require('./routes/favourite.routes');
 const cartroutes= require('./routes/user/cart.routes');
+const orderRoutes=require('./routes/user/order.routes');
 
 // const productroutes= require("./routes/fproduct.routes");
 
@@ -35,6 +36,7 @@ server.use('/api/product/admin',productroutes);
 server.use('/api/product/user',productuserroutes);
 server.use('/api/favourite',favouriteroutes);
 server.use('/api/cart',cartroutes);
+server.use('/api/order',orderRoutes)
 // server.use('/api/fproduct',productroutes);
 
 
