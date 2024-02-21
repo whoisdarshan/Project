@@ -1,12 +1,17 @@
+
+
 require('dotenv').config();
+const http =require("http");
 const express = require('express');
 const server = express(); 
 const cors = require('cors');
 const path = require('path');
 const imagePath = path.join(__dirname,'public','images');
 
-PORT= process.env.PORT;
-dbURL = process.env.MONGO_URL;
+// const {Response}= http;
+
+const PORT= process.env.PORT!;
+const dbURL = process.env.MONGO_URL!;
 
 const { default: mongoose } = require('mongoose');
 
@@ -15,9 +20,11 @@ server.use(express.urlencoded({extended:true}));
 server.use(cors());
 server.use('/public/images',express.static(imagePath));
 
-server.get('/',(req,res)=>
+server.get('/',(req:Request,res:)=>
 {
-   res.json({message : 'welcome to express server'});
+
+   res.json("welcome to express server")
+   // res.json('welcome to express server');
 });
 
 const userRoutes= require("./routes/user/user.routes");
@@ -48,7 +55,7 @@ server.listen(PORT,()=>
          mongoose.connect(dbURL);
          console.log('mongodb start');
      } catch (error) {
-       handleError(error);
+       console.log(error);
      }
    console.log(`server is start at http://localhost:3456`);
 })
