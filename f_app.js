@@ -10,8 +10,8 @@ const imagePath = path.join(__dirname,'public','images');
 
 // const {Response}= http;
 
-const PORT= process.env.PORT!;
-const dbURL = process.env.MONGO_URL!;
+ PORT= process.env.PORT;
+ dbURL = process.env.MONGO_URL;
 
 const { default: mongoose } = require('mongoose');
 
@@ -20,7 +20,7 @@ server.use(express.urlencoded({extended:true}));
 server.use(cors());
 server.use('/public/images',express.static(imagePath));
 
-server.get('/',(req:Request,res:)=>
+server.get('/',(req,res)=>
 {
 
    res.json("welcome to express server")
